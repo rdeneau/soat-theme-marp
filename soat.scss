@@ -1,0 +1,303 @@
+/*!
+ * Marp / Marpit SOAT theme.
+ *
+ * @theme soat
+ * @author Michaël Fery
+ *
+ * @auto-scaling true
+ * @size 4:3 960px 720px
+ */
+
+ @import-theme 'gaia';
+
+ $color-black: #1d1d1b;
+ $color-white: #fff;
+ $color-purple: #867fbb;
+ $color-green: #4ab69a;
+ $color-blue: #5bc5f2;
+ $color-red: #ed6965;
+ $color-orange: #f6a000;
+ $color-yellow: #ffe60b;
+
+ $color-light: $color-white;
+ $color-dark: $color-black;
+ $color-primary: $color-green;
+ $color-secondary: $color-orange;
+
+ @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+ @mixin color-scheme($bg, $text, $highlight) {
+  color: $text;
+  background-color: $bg;
+
+  a,
+  mark {
+    color: $highlight;
+  }
+
+  code {
+    background: mix($text, $bg, 80%);
+    color: $bg;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    strong {
+      color: $highlight;
+    }
+  }
+
+  pre > code {
+    background: $text;
+  }
+
+  header,
+  footer,
+  section::after,
+  blockquote::before,
+  blockquote::after {
+    color: mix($text, $bg, 80%);
+  }
+
+  table {
+    th,
+    td {
+      border-color: $text;
+    }
+
+    thead th {
+      background: $text;
+      color: $bg;
+    }
+
+    tbody > tr:nth-child(odd) {
+      td,
+      th {
+        background: rgba($text, 0.1);
+      }
+    }
+  }
+ }
+
+ section {
+   font-size: 28px;
+   font-family: 'Raleway', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI',
+     sans-serif;
+
+   @include color-scheme($color-light, $color-dark, $color-primary);
+
+   ul {
+    list-style: none;
+    li::before {
+      content: '➔';
+      display: inline-block;
+      margin-right: 25px;
+    }
+  }
+
+   &.invert {
+     @include color-scheme($color-dark, $color-light, $color-secondary);
+   }
+
+   &.soat {
+     @include color-scheme($color-primary, $color-light, $color-secondary);
+   }
+
+   &.title {
+    background: url(./themes/soat/backgrounds/bg1.png) no-repeat center center;
+    background-size: cover;
+    background-position: right center;
+    padding-left: 78px;
+    padding-bottom:60px;
+
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: nowrap;
+    // justify-content: center;
+    
+    display: table-cell;
+    vertical-align: bottom;
+
+    h1,
+    h2,
+    h3 {
+      width: 70%;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 1.2em;
+      margin-left: 70px;
+    }
+   }
+
+  &.red {
+    background:
+      url(./themes/soat/backgrounds/bg-red.png) right top no-repeat,
+      $color-red;
+    background-size: cover;
+  }
+
+  &.green {
+    background:
+      url(./themes/soat/backgrounds/bg-green.png) right top no-repeat,
+      $color-green;
+    background-size: cover;
+  }
+
+  &.blue {
+    background:
+      url(./themes/soat/backgrounds/bg-blue.png) right top no-repeat,
+      $color-blue;
+    background-size: cover;
+  }
+
+  &.orange {
+    background:
+      url(./themes/soat/backgrounds/bg-orange.png) right top no-repeat,
+      $color-orange;
+    background-size: cover;
+  }
+
+  &.purple {
+    background: $color-purple;
+  }
+
+  &.speaker {
+    background-image:
+      url(./themes/soat/pictos/SOAT_pictos_reunion.png),
+      url(./themes/soat/backgrounds/bg-orange.png);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 20%, cover;
+    background-position: left, top right;
+
+    h2 {
+      // font-size: 1.2em;
+      padding-left:400px;
+    }
+    p,
+    ul {
+      padding-left:400px;
+      // font-size: 0.7em;
+    }
+    ul {
+      margin-top:30px;
+      margin-bottom:50px;
+    }
+    img[alt~='social-network'] {
+      height: 40px;
+      margin-top: 0px;
+      margin-bottom: -15px;
+      margin-left: -10px;
+      margin-right:10px;
+    }
+    a {
+      text-decoration: none;
+      color: $color-light;
+      padding-left: 0;
+    }
+  }
+
+  &.agenda {
+    ul {
+      margin-left: 80px;
+    }
+    ul li::before {
+      color: $color-yellow;
+    }
+  }
+
+  &.chapter {
+    padding-left: 160px;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "count title"
+        "none subtitle";
+    align-items: flex-end;
+    justify-content: center;
+      
+    h1 {
+        grid-area: count;
+        margin-right: 20px;
+        line-height: 168px;
+        font-size: 7em;
+    }
+    h2 {
+        grid-area: title;
+        margin-top: 100px;
+        font-size: 1.6em;
+        max-width: 65%;
+        align-self: left;
+    }
+    h3 {
+        grid-area: subtitle;
+        font-weight: normal;
+        font-size: 1em;
+    }
+  }
+
+  img[alt~='bg-right'] {
+    position: absolute;
+    right: 80px;
+    bottom: 120px;
+    top: auto;
+  }
+  
+  img[alt~='center'] {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &.workshop h1,
+  &.break h1 {
+    font-size: 250%;
+  }
+
+  &.end {
+    background:
+      url(./themes/soat/backgrounds/bg13.png) right top no-repeat,
+      $color-primary;
+    background-size: cover;
+  }
+
+  /* Main pages title */
+  &:not(.title):not(.speaker):not(.chapter):not(.agenda):not(.workshop):not(.break):not(.end)
+   h1 {
+    background: $color-purple;
+    color: $color-light;
+    padding: 10px 20px;
+    line-height: 60px;
+    margin: 0 -20px;
+   }
+ }
+
+ /* PAGINATION */
+ section::after {
+  color: $color-black;
+  font-weight: bold;
+  font-size: 1.2em;
+ }
+ section.title::after,
+ section.end::after {
+  visibility: hidden;
+ }
+
+ /* 2-Columns Layout */ 
+ .column {
+  float: left;
+  // width: 50%;
+}
+.row:after { /* Clear floats after the columns */
+  content: "";
+  display: table;
+  clear: both;
+}

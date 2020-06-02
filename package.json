@@ -1,0 +1,20 @@
+
+{
+  "name": "marp-cli-example",
+  "version": "0.1.0",
+  "author": "Michael Fery",
+  "license": "WTFPL",
+  "private": true,
+  "scripts": {
+    "build": "node-sass soat.scss -o ./themes",
+    "test": "npx @marp-team/marp-cli sample.md --pdf --allow-local-files --theme themes/soat.css",
+    "clean": "npx rimraf sample.pdf && npx rimraf themes/soat/soat.css"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^0.16.1",
+    "@marp-team/marp-core": "^1.1.1"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
