@@ -3,7 +3,7 @@ name: CSS Generation
 
 on:
   push:
-    branches: [ master, workflow ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
