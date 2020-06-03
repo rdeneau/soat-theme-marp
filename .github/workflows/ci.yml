@@ -33,7 +33,7 @@ jobs:
 
   tag:
 
-    #if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
@@ -57,7 +57,7 @@ jobs:
 
   create-release:
 
-    #if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
@@ -81,7 +81,7 @@ jobs:
 
   release-upload: # This job defines a strategy for deck outputs types (pdf, pptx, etc.)
 
-    #if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
