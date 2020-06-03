@@ -30,3 +30,92 @@ jobs:
         with:
           name: sample
           path: sample.pdf
+
+  tag:
+
+    #if: github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
+      - name: Bump version and push tag
+        id: bum_version
+        uses: anothrNick/github-tag-action@1.17.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          RELEASE_BRANCHES: .*
+    
+    # Map a step output to a job output
+    outputs:
+      new-tag: ${{ steps.bum_version.outputs.new_tag  }}
+
+  create-release:
+
+    #if: github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    needs: tag
+    
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by the GitHub action
+        with:
+          tag_name: ${{ needs.tag.outputs.new-tag }}
+          release_name: ${{ needs.tag.outputs.new-tag }}
+          draft: true
+          prerelease: true
+    
+    # Map a step output to a job output
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+
+  release-upload: # This job defines a strategy for deck outputs types (pdf, pptx, etc.)
+
+    #if: github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    needs: create-release
+
+    steps:
+      - name: Download themes artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: themes
+      - name: Download sample artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: sample
+      - name: Zip themes
+        run: |
+          zip -r themes.zip themes
+      - name: Upload Release Themes
+        id: upload-release-themes
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by the GitHub action
+        with:
+          upload_url: ${{needs.create-release.outputs.upload_url}} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: themes.zip
+          asset_name: themes.zip
+          asset_content_type: application/zip
+      - name: Upload Release Sample
+        id: upload-release-sample
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by the GitHub action
+        with:
+          upload_url: ${{needs.create-release.outputs.upload_url}} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: sample/sample.pdf
+          asset_name: sample.pdf
+          asset_content_type: application/pdf
