@@ -1,3 +1,5 @@
+![CSS Generation](https://github.com/michaelfery/soat-theme-marp/workflows/CSS%20Generation/badge.svg?branch=master)
+
 # Thèmes
 
 ## Gestion des thèmes avec MARP
