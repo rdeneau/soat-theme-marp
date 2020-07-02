@@ -38,23 +38,23 @@ ou via la commande npm:
 
 ```bash
 cd themes
-npm run -s build
+npm run -s build-css
 ```
 
 ### Génération dynamique
 
-Vous pouvez également générer le fichier de manière dynamique grâce au paramêtre `--watch` quand vous travaillez sur le thème :
+Vous pouvez également générer le fichier de manière dynamique grâce au paramètre `--watch` quand vous travaillez sur le thème :
 
 ```bash
 cd themes
 node-sass --watch .\soat.scss
 ```
 
-Grâce à cette commande, chaque modification du fichier `soat.scss` génerera une nouvelle version du fichier `soat.css`.
+Grâce à cette commande, chaque modification du fichier `soat.scss` générera une nouvelle version du fichier `soat.css`.
 
 ## Sample
 
-Pour tester le theme, vous pouvez générer le deck de slides via le fichier `sample.md` et la commande suivante:
+Pour tester le thème, vous pouvez générer le deck de slides via le fichier `sample.md` et la commande suivante :
 
 ```bash
 npx @marp-team/marp-cli sample.md --pdf --allow-local-files --theme themes/soat.css
@@ -63,7 +63,7 @@ npx @marp-team/marp-cli sample.md --pdf --allow-local-files --theme themes/soat.
 Vous pouvez également utiliser la commande suivante:
 
 ```bash
-npm run -s test
+npm run -s generate-sample
 ```
 
 Vous aurez donc un fichier pdf généré avec le thème.
