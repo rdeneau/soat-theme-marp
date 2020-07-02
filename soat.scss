@@ -24,6 +24,7 @@
  $color-primary: $color-green;
  $color-secondary: $color-orange;
 
+ @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
  @mixin color-scheme($bg, $text, $highlight) {
@@ -38,6 +39,8 @@
   code {
     background: mix($text, $bg, 80%);
     color: $bg;
+    font-family: "Fira Code", monospace;
+    font-variant-ligatures: normal;
   }
 
   h1,
