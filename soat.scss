@@ -170,8 +170,11 @@
   }
 
   &.purple {
-    background: $color-purple;
-  }
+    background:
+      url(./themes/soat/backgrounds/bg-purple.png) right top no-repeat,
+      $color-purple;
+    background-size: cover;
+    }
 
   &.speaker {
     background-image:
