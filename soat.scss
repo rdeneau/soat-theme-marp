@@ -30,6 +30,7 @@
  @mixin color-scheme($bg, $text, $highlight) {
   color: $text;
   background-color: $bg;
+  background: url(./themes/soat/backgrounds/bg0.png) no-repeat center center;
 
   a,
   mark {
