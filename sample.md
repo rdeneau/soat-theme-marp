@@ -183,6 +183,19 @@ gitmerge --squash
 
 ---
 
+# Code sample : ligature
+
+La police utilisée pour les portions de code est [FiraCode](https://github.com/tonsky/FiraCode). Sa particularité est de supporter la ligature de caractères consécutifs pour afficher le caractère spécial correspondant. Exemples :
+
+| Symbole  | Caractères    | Résultat        |
+|----------|---------------|-----------------|
+| Arrows   | -> --> => <=> | `-> --> => <=>` |
+| Equality | == === != !== | `== === != !==` |
+| Compare  | >= <= ~=      | `>= <= ~=`      |
+| Pipe     | \|\> \>\>     | `|> >>`         |
+
+---
+
 # Images
 
 Vous pouvez manipuler des images avec la directive `center`, `h`, `w` et `opacity`:

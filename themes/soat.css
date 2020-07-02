@@ -8,6 +8,7 @@
  * @auto-scaling true
  * @size 4:3 960px 720px
  */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 @import-theme 'gaia';
 section {
@@ -15,13 +16,16 @@ section {
   font-family: 'Raleway', 'Avenir Next', 'Avenir', 'Trebuchet MS', 'Segoe UI', sans-serif;
   color: #1d1d1b;
   background-color: #fff;
+  background: url(./themes/soat/backgrounds/bg0.png) no-repeat center center;
   /* Main pages title */ }
   section a,
   section mark {
     color: #4ab69a; }
   section code {
     background: #4a4a49;
-    color: #fff; }
+    color: #fff;
+    font-family: "Fira Code", monospace;
+    font-variant-ligatures: normal; }
   section h1 strong,
   section h2 strong,
   section h3 strong,
@@ -54,13 +58,16 @@ section {
       margin-right: 25px; }
   section.invert {
     color: #fff;
-    background-color: #1d1d1b; }
+    background-color: #1d1d1b;
+    background: url(./themes/soat/backgrounds/bg0.png) no-repeat center center; }
     section.invert a,
     section.invert mark {
       color: #f6a000; }
     section.invert code {
       background: #d2d2d1;
-      color: #1d1d1b; }
+      color: #1d1d1b;
+      font-family: "Fira Code", monospace;
+      font-variant-ligatures: normal; }
     section.invert h1 strong,
     section.invert h2 strong,
     section.invert h3 strong,
@@ -87,13 +94,16 @@ section {
       background: rgba(255, 255, 255, 0.1); }
   section.soat {
     color: #fff;
-    background-color: #4ab69a; }
+    background-color: #4ab69a;
+    background: url(./themes/soat/backgrounds/bg0.png) no-repeat center center; }
     section.soat a,
     section.soat mark {
       color: #f6a000; }
     section.soat code {
       background: #dbf0eb;
-      color: #4ab69a; }
+      color: #4ab69a;
+      font-family: "Fira Code", monospace;
+      font-variant-ligatures: normal; }
     section.soat h1 strong,
     section.soat h2 strong,
     section.soat h3 strong,
@@ -148,7 +158,8 @@ section {
     background: url(./themes/soat/backgrounds/bg-orange.png) right top no-repeat, #f6a000;
     background-size: cover; }
   section.purple {
-    background: #867fbb; }
+    background: url(./themes/soat/backgrounds/bg-purple.png) right top no-repeat, #867fbb;
+    background-size: cover; }
   section.speaker {
     background-image: url(./themes/soat/pictos/SOAT_pictos_reunion.png), url(./themes/soat/backgrounds/bg-orange.png);
     background-repeat: no-repeat, no-repeat;
